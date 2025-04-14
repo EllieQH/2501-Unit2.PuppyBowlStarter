@@ -1,13 +1,24 @@
 //If you would like to, you can create a variable to store the API_URL here.
 //This is optional. if you do not want to, skip this and move on.
 
-
 /////////////////////////////
 /*This looks like a good place to declare any state or global variables you might need*/
-
-////////////////////////////
-
-
+const puppyList = document.querySelector ("#puppyList")
+let puppies = []
+let players = []
+const render = () => {
+  const events =  players.map ((event) => {
+      return `<li>
+      <h3>${event.name}</h3>
+      <p>Breed :${event.breed}</p>
+      <p>Status :${event.status}</p>
+      <p>Image :${event.image}</p>
+      <button id= "${event.id}" class="clickformoreinfo">ClickHere</button>
+  </li>`
+  })
+  console.log (events.join(""))
+  puppyList.innerHTML = events.join("")
+  }
 
 /**
  * Fetches all players from the API.
@@ -16,9 +27,25 @@
  */
 const fetchAllPlayers = async () => {
   //TODO
+  try {
+    const response = await fetch ("https://fsa-puppy-bowl.herokuapp.com/api/2501-PUPPIES/players")
+    const data = await response.json()
+console.log (data.data.players)
+ players = data.data.players
+ render ()
+} catch (error) {
+   console.error (error)
+}
+}
+fetchAllPlayers();
 
-};
-
+puppyForm.addEventListener("submit", async (event)=>{ 
+  event.preventDefault()
+const name = event.target.name.value
+const breed = event.target.breed.value
+const status = event.target.status.value
+const image = image(event.target.image.value)
+})
 /**
  * Fetches a single player from the API.
  * This function should not be doing any rendering
@@ -89,11 +116,7 @@ const removePlayer = async (playerId) => {
  *    from the database and our current view without having to refresh
  *
  */
-const render = () => {
   // TODO
-
-  
-};
 
 /**
  * Updates html to display a single player.

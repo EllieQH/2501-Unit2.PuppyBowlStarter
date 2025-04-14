@@ -11,6 +11,28 @@
   <body>
     <h1>Welcome to Puppy Bowl!</h1>
     <!--Don't be afraid to add stuff to your HTML as needed!-->
-    
+    <form id="puppyForm">
+      <h2>Meet your best friend</h2>
+      <label>Name:</label>
+      <input name="name" type="text" required/>
+      <br/>
+      <label>Breed:</label>
+      <input name="breed" type="text" required/>
+      <br/>
+      <label>Status:</label>
+      <input name="status" type="text" required/>
+      <br/>
+      <label>Image:</label>
+      <input name="image" type="imageurl" required/>
+      <br/>
+      <button type="submit">Learn More</button>
+  </form>
+  <ul id ="puppyList"></ul>
+  <div class="roster" id="roster"></div>
+<h2 id= "detailName"></h2>
+<p>Breed <span id="detailBreed"></span></p>
+<p>Status <span id="detaiStatus"></span></p>
+<p>Image <span id="detailImage"></span></p>
+<button id="deleteButton">Remove from roster</button>
   </body>
 </html>
